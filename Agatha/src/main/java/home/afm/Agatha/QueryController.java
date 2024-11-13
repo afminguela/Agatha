@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-    
 @RestController
 @RequestMapping("/api")
 public class QueryController {
+
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
     @PostMapping("/query")
-    public ResponseEntity<?> executeQuery(@RequestBody QueryRequest request) {
+    public ResponseEntity<Object> executeQuery(@RequestBody QueryRequest request) {
         String query = request.getQuery().toLowerCase();
-        
         // Validación básica de seguridad
         if (!isQuerySafe(query)) {
             return ResponseEntity.badRequest().body("Query no permitida");
@@ -37,13 +36,12 @@ public class QueryController {
     }
 
     @PostMapping("/reset")
-    public ResponseEntity<?> resetDatabase() {
+    public ResponseEntity<String> resetDatabase() {
         try {
             // Ejecutar script de reinicio
             ClassPathResource resource = new ClassPathResource("reset.sql");
             String[] statements = new String(Files.readAllBytes(resource.getFile().toPath()))
-                                    .split(";");
-            
+                    .split(";");
             for (String statement : statements) {
                 if (!statement.trim().isEmpty()) {
                     jdbcTemplate.execute(statement);
@@ -62,16 +60,13 @@ public class QueryController {
         }
 
         // Lista negra de palabras clave peligrosas
-        String[] blacklist = {"drop", "delete", "update", "insert", "alter", 
-                            "truncate", "create", "exec", "union"};
-        
+        String[] blacklist = {"drop", "delete", "update", "insert", "alter",
+                "truncate", "create", "exec", "union"};
         for (String banned : blacklist) {
             if (query.contains(banned)) {
                 return false;
             }
         }
-
         return true;
     }
 }
-

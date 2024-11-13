@@ -1,58 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.cdnfonts.com/css/typewriter" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agatha - Hospital Database</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.cdnfonts.com/css/typewriter" rel="stylesheet">
                 
-    <title>Agatha, Misterio a toda pastilla</title>
 </head>
-<body class="PantallaDeJuego" style="width: 1440px; height: 1024px; position: relative; background: #47C3A0">
-   
-        <button class="Deletebutton" style="width: 114px; height: 47px; left: 1285px; top: 962px; position: absolute">
-          <div class="Group2" style="width: 114px; height: 53px; left: 0px; top: 0px; position: absolute">
-            <div class="Boxintro" style="width: 114px; height: 47px; left: 0px; top: 6px; position: absolute; background: linear-gradient(180deg, #4FCCDD 0%, #3D82AA 50%, #2B3977 100%); border-radius: 20px; border: 1px #B3E5F1 solid"></div>
-            <div class="Boxintro" style="width: 114px; height: 47px; left: 0px; top: 0px; position: absolute; background: linear-gradient(180deg, #4FCCDD 0%, #3D82AA 50%, #2B3977 100%); border-radius: 20px; border: 1px #B3E5F1 solid"></div>
-          </div>
-          <span class="Borrar" style="width: 79px; height: 35px; left: 18px; top: 6px; position: absolute; color: black; font-size: 24px; font-family: American Typewriter; font-weight: 400; word-wrap: break-word">Borrar</span>
-        </button>
-        <button class="Enterbutton" style="width: 114px; height: 47px; left: 1154px; top: 962px; position: absolute">
-          <div class="Group1" style="width: 114px; height: 53px; left: 0px; top: 0px; position: absolute">
-                <div class="Boxintro" style="width: 114px; height: 47px; left: 0px; top: 6px; position: absolute; background: linear-gradient(180deg, #4FDDB5 0%, #3DAA8C 50%, #2B7761 100%); border-radius: 20px; border: 1px #B3E5F1 solid"></div>
-                <div class="Boxintro" style="width: 114px; height: 47px; left: 0px; top: 0px; position: absolute; background: linear-gradient(180deg, #4FDDB5 0%, #3DAA8C 50%, #2B7761 100%); border-radius: 20px; border: 1px #B3E5F1 solid"></div>
-          </div>
-             <span class="Enter" style="width: 67px; height: 35px; left: 26px; top: 6px; position: absolute; color: black; font-size: 24px; font-family: American Typewriter; font-weight: 400; word-wrap: break-word">Enter</span>
-        </button>
-        
-    <output class="Terminal" style="width: 650px; height: 523px; left: 742px; top: 258px; position: absolute; background: #333333; border-radius: 11px; border: 9px #4FDDB5 solid"></output>
-        
-    <input class="Input" style="width: 657px; height: 134px; left: 735px; top: 812px; position: absolute; background: #333333; border-radius: 11px; border: 9px #4FDDB5 solid"></input>
-        
-    
-    <div class="Notes" style="width: 625px; height: 756px; left: 51px; top: 253px; position: absolute">
-            
-        <input type="textarea" class="Notas" style="width: 605px; height: 736px; left: 10px; top: 10px; position: absolute; background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%); box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px; border-radius: 20px; border: 1px #F6F3F3 solid; filter: blur(6.60px); backdrop-filter: blur(4px)"></div>
-          
-        <p class="Pcuaderno" style="left: 26px; top: 35px; position: absolute; color: black; font-size: 24px; font-weight: 400; word-wrap: break-word">Este es tu cuaderno de notas: </p>
-          
-        <img class="Texturacuaderno" style="width: 556px; height: 655px; left: 34px; top: 73px; position: absolute; border-radius: 16px" src="papel_cuadrados.jpg" alt="Hoja de papel de cuaderno, decorativo" />
-    </div>
-        
-        
-        
-        <div class="Intro" style="width: 661px; height: 151px; left: 729px; top: 61px; position: absolute">
-          <div class="Boxintro" style="width: 670px; height: 151px; left: 0px; top: 0px; position: absolute; background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%); box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px; border-radius: 20px; border: 1px #F6F3F3 solid; filter: blur(6.60px)"></div>
-          <div class="Intro" style="width: 589px; height: 43px; left: 36px; top: 21px; position: absolute; color: black; font-size: 24px; font-family: American Typewriter; font-weight: 400; word-wrap: break-word">Este es tu ordenador, usalo para acceder a la base de datos encontrar quién mató al paciente X. Lo que sabemos es que murió el dia 18-02.2023 <br/>Prueba con el primer comando. </div>
-        </div>
-        
-        
-        
-        
-        <div class="Header" style="width: 632px; height: 175px; left: 59px; top: 49px; position: absolute">
-          <div class="Boxheader" style="width: 607px; height: 163px; left: 0px; top: 12px; position: absolute; background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%); box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px; border-radius: 20px; border: 1px #F6F3F3 solid; filter: blur(6.60px); backdrop-filter: blur(4px)"></div>
-          <h1 class="Header" style="width: 476px; height: 125px; left: 74px; top: 0px; position: absolute; color: black; font-size: 128px; font-family: American Typewriter; font-weight: 400; word-wrap: break-word">Agatha</h1>
-          <h3 class="Subheader" style="width: 376px; height: 35px; left: 256px; top: 125px; position: absolute; color: black; font-size: 24px; font-family: American Typewriter; font-weight: 400; word-wrap: break-word">Misterio a toda pastilla</h3>
-        </div>
-     
+<body>
+  <body>
+  <main class="Container">
+    <section class="PantallaDeJuego">
+      <button id="resetButton" class="Deletebutton" aria-label="Borrar comandos anteriores">
+        <span class="Botonazul">
+          <span class="Fbotondelete2"></span>
+          <span class="Fbotondelete1"></span>
+        </span>
+        <span class="Borrar">Borrar</span>
+      </button>
+      <button id="enterButton" class="Enterbutton" aria-label="Ejecutar comando">
+        <span class="Botonverde">
+          <span class="Fbotonenter2"></span>
+          <span class="Fbotonenter1"></span>
+        </span>
+        <span class="Enter">Enter</span>
+      </button>
+      <div id="Cuadro_de_entrada" class="Terminal">
+        <div class="terminal-screen"></div>
+      </div>
+      <textarea id="queryInput" class="Input" aria-label="Ingrese su comando aquí"></textarea>
+      <section class="Notes">
+        <textarea class="Divnotas" aria-label="Notas sobre pistas encontradas"></textarea>
+        <p class="Pcuaderno">Este es tu cuaderno de notas:</p>
+        <img class="Texturacuaderno" src="media/papel_cuadrados.jpg" alt="Textura de cuaderno" />
+      </section>
+      <section class="Intro">
+        <div class="Boxintro"></div>
+        <p class="Pintro">Este es tu ordenador, úsalo para acceder a la base de datos y encontrar quién mató al Paciente X. Lo que sabemos es que murió el día 15.03.2023<br/>Prueba con el primer comando.</p>
+      </section>
+      <section class="Header">
+        <div class="Boxheader"></div>
+        <h1 class="Titulo">Agatha</h1>
+        <h2 class="Subheader">Misterio a toda pastilla</h2>
+      </section>
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
 </body>
+
 </html>

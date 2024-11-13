@@ -1,27 +1,275 @@
-.body{
-    width: 1630px;
-    height: 1224px;
-    background: #46C39F;
-    font-family: 'Typewriter', sans-serif;
-
-}
+body {
+  width: 1630px;
+  height: 1224px;
+  background: #46c39f;
+  font-family: 'Typewriter', sans-serif;
                                                 
+}
+
+.PantallaDeJuego {
+  width: 1440px;
+  height: 1024px;
+  left: 100px;
+  top: 100px;
+  position: absolute;
+  background: #47C3A0;
+}
+
+.Deletebutton {
+  width: 114px;
+  height: 47px;
+  left: 1285px;
+  top: 962px;
+  position: absolute;
+}
+
+.Botonazul {
+  width: 114px;
+  height: 53px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+.Fbotondelete2 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 6px;
+  position: absolute;
+  background: linear-gradient(180deg, #4FCCDD 0%, #3D82AA 50%, #2B3977 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.Fbotondelete1 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: linear-gradient(180deg, #4FCCDD 0%, #3D82AA 50%, #2B3977 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.Borrar {
+  width: 79px;
+  height: 35px;
+  left: 18px;
+  top: 6px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: American Typewriter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Enterbutton {
+  width: 114px;
+  height: 47px;
+  left: 1154px;
+  top: 962px;
+  position: absolute;
+}
+
+.Botonverde {
+  width: 114px;
+  height: 53px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+.Fbotonenter2 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 6px;
+  position: absolute;
+  background: linear-gradient(180deg, #4FDDB5 0%, #3DAA8C 50%, #2B7761 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.Fbotonenter1 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: linear-gradient(180deg, #4FDDB5 0%, #3DAA8C 50%, #2B7761 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.Enter {
+  width: 67px;
+  height: 35px;
+  left: 26px;
+  top: 6px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Terminal {
+  width: 650px;
+  height: 523px;
+  left: 742px;
+  top: 258px;
+  position: absolute;
+  background: #333333;
+  border-radius: 11px;
+  border: 9px #4FDDB5 solid;
+  overflow-y: auto;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  
+}
 
 .terminal-screen {
-    background-color: #000;
-    color: #0f0;
-    font-family: 'Courier New', monospace;
-    padding: 20px;
-    height: 300px;
+    color: #00FF00;
+    font-family: monospace;
+    padding: 10px;
     overflow-y: auto;
-    margin-bottom: 10px;
+    height: 100%;
 }
 
-.notebook {
-    background-color: #f4f4f4;
-    border: 1px solid #ddd;
-    padding: 20px;
-    height: 300px;
-    overflow-y: auto;
-    font-family: 'Handlee', cursive;
+.Input {
+  width: 657px;
+  height: 134px;
+  left: 735px;
+  top: 812px;
+  position: absolute;
+  background: #333333;
+  border-radius: 11px;
+  border: 9px #4FDDB5 solid;
+  color: #00FF00;
+    font-family: monospace;
+    padding: 10px;
+}
+
+.Notes {
+  width: 625px;
+  height: 756px;
+  left: 51px;
+  top: 253px;
+  position: absolute;
+}
+
+.Divnotas {
+  width: 605px;
+  height: 736px;
+  left: 10px;
+  top: 10px;
+  position: absolute;
+  background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%);
+  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
+  border-radius: 20px;
+  border: 1px #F6F3F3 solid;
+  filter: blur(6.60px);
+  backdrop-filter: blur(4px);
+}
+
+.Pcuaderno {
+  left: 26px;
+  top: 35px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-family: American Typewriter;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Texturacuaderno {
+  width: 556px;
+  height: 655px;
+  left: 34px;
+  top: 73px;
+  position: absolute;
+  border-radius: 16px;
+}
+
+.Intro {
+  width: 661px;
+  height: 151px;
+  left: 729px;
+  top: 61px;
+  position: absolute;
+}
+
+.Boxintro {
+  width: 670px;
+  height: 151px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%);
+  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
+  border-radius: 20px;
+  border: 1px #F6F3F3 solid;
+  filter: blur(6.60px);
+}
+
+.Pintro {
+  width: 589px;
+  height: 43px;
+  left: 36px;
+  top: 21px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Header {
+  width: 632px;
+  height: 175px;
+  left: 59px;
+  top: 49px;
+  position: absolute;
+}
+
+.Boxheader {
+  width: 607px;
+  height: 163px;
+  left: 0px;
+  top: 12px;
+  position: absolute;
+  background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%);
+  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
+  border-radius: 20px;
+  border: 1px #F6F3F3 solid;
+  filter: blur(6.60px);
+  backdrop-filter: blur(4px);
+}
+
+.Titulo {
+  width: 476px;
+  height: 125px;
+  left: 74px;
+  top: 0px;
+  position: absolute;
+  color: black;
+  font-size: 120px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Subheader {
+  width: 376px;
+  height: 35px;
+  left: 256px;
+  top: 125px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
 }
