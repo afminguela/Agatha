@@ -1,27 +1,22 @@
 document.addEventListener('DOMContentLoaded', function() {
-  const terminal = document.getElementById('Cuadro_de_entrada');
+  const terminal = document.getElementById('Terminal');
   const input = document.getElementById('queryInput');
-  const notebook = document.querySelector('.Notas');
+  const notebook = document.querySelector('.Notes');
   const enterButton = document.querySelector('.Enterbutton');
   const resetButton = document.querySelector('.Deletebutton');
 
   let commandHistory = [];
   let currentHistoryIndex = -1;
-
-  function addToTerminal(text) {
-    const screen = terminal.querySelector('.terminal-screen');
-    const lines = screen.innerHTML.split('\n');
-  lines.push(`> ${text}`);
-  
-  // Limitar el número de líneas
-  if (lines.length > MAX_LINES) {
-    lines.splice(0, lines.length - MAX_LINES);
+ 
+  function addToTerminal(text, isTable = false) {
+  const screen = terminal.querySelector('.terminal-screen');
+  if (isTable) {
+    screen.innerHTML += `\n${text}`;
+  } else {
+    screen.innerHTML += `\n> ${text}`;
   }
-  
-  screen.innerHTML = lines.join('\n');
-   
-    screen.scrollTop = screen.scrollHeight;
-  }
+  screen.scrollTop = screen.scrollHeight;
+}
 
   function addToNotes(text) {
     notebook.innerHTML += `\n- ${text}`;
@@ -47,25 +42,26 @@ document.addEventListener('DOMContentLoaded', function() {
     if (response.ok) {
       addToTerminal(`Ejecutando: ${query}`);
       if (Array.isArray(data)) {
-        data.forEach(row => {
-          // Formatear la salida para mejor legibilidad
-          const formattedRow = Object.entries(row)
-            .map(([key, value]) => `${key}: ${value}`)
-            .join(' | ');
-          addToTerminal(formattedRow);
-          
-          // Detectar pistas importantes
-          if (row.detalles && (
-            row.detalles.includes('Digoxina') ||
-            row.detalles.includes('manipulación') ||
-            row.detalles.includes('documentos confidenciales')
-          )) {
-            addToNotes(`¡Pista encontrada!: ${row.detalles}`);
-          }
-        });
-      } else {
-        addToTerminal(`Error: ${JSON.stringify(data)}`);
-      }
+  if (data.length > 0) {
+    const tableOutput = formatAsTable(data);
+    addToTerminal(tableOutput, true);
+  } else {
+    addToTerminal("No se encontraron resultados.");
+  }
+  
+  // Detectar pistas importantes
+  data.forEach(row => {
+    if (row.detalles && (
+      row.detalles.includes('Digoxina') ||
+      row.detalles.includes('manipulación') ||
+      row.detalles.includes('documentos confidenciales')
+    )) {
+      addToNotes(`¡Pista encontrada!: ${row.detalles}`);
+    }
+  });
+} else {
+  addToTerminal(`Error: ${JSON.stringify(data)}`);
+}
     }
   } catch (error) {
     addToTerminal(`Error: ${error.message}`);
@@ -74,21 +70,45 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 }
 
-  async function resetDatabase() {
+function formatAsTable(data) {
+  if (data.length === 0) return "No se encontraron resultados.";
+
+  // Obtener las claves (nombres de columnas) del primer objeto
+  const keys = Object.keys(data[0]);
+
+  // Calcular el ancho máximo para cada columna
+  const columnWidths = keys.map(key => 
+    Math.max(key.length, ...data.map(row => String(row[key]).length))
+  );
+
+  // Crear la línea de encabezado
+  const header = keys.map((key, i) => key.padEnd(columnWidths[i])).join(' | ');
+  const separator = columnWidths.map(width => '-'.repeat(width)).join('-+-');
+
+  // Crear las filas de datos
+  const rows = data.map(row =>
+    keys.map((key, i) => String(row[key]).padEnd(columnWidths[i])).join(' | ')
+  );
+
+  // Combinar todo
+  return `${header}\n${separator}\n${rows.join('\n')}`;
+}
+  async function resetTerminal() {
     try {
-      const response = await fetch('/api/reset', {
-        method: 'POST'
-      });
-      const data = await response.text();
-      addToTerminal(data);
-      notebook.innerHTML = '';
+        const terminalScreen = terminal.querySelector('.terminal-screen');
+    if (terminalScreen) {
+      terminalScreen.innerHTML = '';
+  
+          }
+    
+         
     } catch (error) {
       addToTerminal(`Error al reiniciar: ${error.message}`);
     }
   }
 
   enterButton.addEventListener('click', executeQuery);
-  resetButton.addEventListener('click', resetDatabase);
+  resetButton.addEventListener('click', resetTerminal);
 
   input.addEventListener('keydown', function(e) {
     if (e.key === 'Enter') {

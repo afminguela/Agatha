@@ -1,6 +1,6 @@
 body {
-  width: 1630px;
-  height: 1224px;
+  width: 1440px;
+  height: 1024px;
   background: #46c39f;
   font-family: 'Typewriter', sans-serif;
                                                 
@@ -14,12 +14,14 @@ body {
   position: absolute;
   background: #47C3A0;
 }
+/*-------- Boton de Borrar------*/
 
 .Deletebutton {
   width: 114px;
   height: 47px;
   left: 1285px;
-  top: 962px;
+  top: 992px;
+  border-radius: 20px;
   position: absolute;
 }
 
@@ -65,12 +67,14 @@ body {
   font-weight: 400;
   word-wrap: break-word;
 }
+/* -------------boton de Enter ------------*/
 
 .Enterbutton {
   width: 114px;
   height: 47px;
   left: 1154px;
-  top: 962px;
+  top: 992px;
+  border-radius: 20px;
   position: absolute;
 }
 
@@ -116,10 +120,11 @@ body {
   word-wrap: break-word;
 }
 
+/*--------La terminal ----------------*/
 .Terminal {
-  width: 650px;
+  width: 657px;
   height: 523px;
-  left: 742px;
+  left: 735px;
   top: 258px;
   position: absolute;
   background: #333333;
@@ -139,6 +144,7 @@ body {
     height: 100%;
 }
 
+/*-------------El input de texto de la terminal -----------*/
 .Input {
   width: 657px;
   height: 134px;
@@ -149,10 +155,11 @@ body {
   border-radius: 11px;
   border: 9px #4FDDB5 solid;
   color: #00FF00;
-    font-family: monospace;
-    padding: 10px;
+  font-family: monospace;
+  padding: 10px;
 }
 
+/* ---------  El block de notas -------------------------*/
 .Notes {
   width: 625px;
   height: 756px;
@@ -177,7 +184,7 @@ body {
 
 .Pcuaderno {
   left: 26px;
-  top: 35px;
+  top: 0px;
   position: absolute;
   color: black;
   font-size: 24px;
@@ -194,6 +201,8 @@ body {
   position: absolute;
   border-radius: 16px;
 }
+
+/* ---------  El bloque de instrucciones del juego ----------*/
 
 .Intro {
   width: 661px;
@@ -220,7 +229,7 @@ body {
   width: 589px;
   height: 43px;
   left: 36px;
-  top: 21px;
+  top: 0px;
   position: absolute;
   color: black;
   font-size: 24px;
@@ -228,6 +237,7 @@ body {
   word-wrap: break-word;
 }
 
+/* ------------------ El Bloque con el Título del Juego---------------*/
 .Header {
   width: 632px;
   height: 175px;
@@ -250,11 +260,11 @@ body {
   backdrop-filter: blur(4px);
 }
 
-.Titulo {
+.Titulo {   /*  AGATHA  */
   width: 476px;
   height: 125px;
   left: 74px;
-  top: 0px;
+  top: -90px;
   position: absolute;
   color: black;
   font-size: 120px;
@@ -262,7 +272,7 @@ body {
   word-wrap: break-word;
 }
 
-.Subheader {
+.Subheader {  /* Un misterio a toda pastilla */
   width: 376px;
   height: 35px;
   left: 256px;
