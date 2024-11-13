@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
   const terminal = document.getElementById('Terminal');
   const input = document.getElementById('queryInput');
-  const notebook = document.querySelector('.Notes');
+  const notebook = document.querySelector('.NoteContent');
   const enterButton = document.querySelector('.Enterbutton');
   const resetButton = document.querySelector('.Deletebutton');
 

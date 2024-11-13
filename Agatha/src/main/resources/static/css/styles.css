@@ -9,8 +9,8 @@ body {
 .PantallaDeJuego {
   width: 1440px;
   height: 1024px;
-  left: 100px;
-  top: 100px;
+  left: 10px;
+  top: 10px;
   position: absolute;
   background: #47C3A0;
 }
@@ -166,7 +166,12 @@ body {
   left: 51px;
   top: 253px;
   position: absolute;
+  z-index: 0
 }
+ .NoteContent {
+    position: relative;
+    z-index: 1;
+  }
 
 .Divnotas {
   width: 605px;
@@ -188,11 +193,20 @@ body {
   position: absolute;
   color: black;
   font-size: 24px;
-  font-family: American Typewriter;
+  
   font-weight: 400;
   word-wrap: break-word;
 }
-
+.NoteContent {
+   width: 556px;
+  height: 655px;
+  left: 34px;
+  top: 73px;
+  position: absolute;
+  border-radius: 16px;
+  z-index: 2; 
+    
+}
 .Texturacuaderno {
   width: 556px;
   height: 655px;
@@ -200,6 +214,7 @@ body {
   top: 73px;
   position: absolute;
   border-radius: 16px;
+  z-index: 0;
 }
 
 /* ---------  El bloque de instrucciones del juego ----------*/

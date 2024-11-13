@@ -29,24 +29,33 @@
         <span class="Enter">Enter</span>
       </button>
       
-        
+        <!-- El input del teclado, aqui escribimos los comandos --> 
         <div id="Terminal" class="Terminal">
         <div class="terminal-screen"></div>
       </div>
       
+        <!-- El input del teclado, aqui escribimos los comandos --> 
         <textarea id="queryInput" class="Input" aria-label="Ingrese su comando aquí"></textarea>
       
-      
+        <!-- EL cuaderno de Notas  -->
       <section class="Notes">
-        <textarea class="Divnotas" aria-label="Notas sobre pistas encontradas"></textarea>
+          <div class="NoteContent">
+          <textarea class="Divnotas" aria-label="Notas sobre pistas encontradas" placeholder="Escribe aqui tus notas"></textarea>
         <p class="Pcuaderno">Este es tu cuaderno de notas:</p>
         <img class="Texturacuaderno" src="media/Lined-Notebook.png" alt="Textura de cuaderno" />
+        <!-- <div class="PistaEncontrada"></div>-->
+          </div>
       </section>
+        
+        
+        <!-- El Bloque con la introduccion, aqui damos el primer comando en el p -->  
       <section class="Intro">
         <div class="Boxintro"></div>
-        <p class="Pintro">Este es tu ordenador, úsalo para acceder a la base de datos y encontrar quién mató al Paciente X. Lo que sabemos es que murió el día 15.03.2023<br/>Prueba con el primer comando.</p>
+        <p class="Pintro">Este es tu ordenador, úsalo para acceder a la base de datos y encontrar quién mató al Paciente X. Lo que sabemos es que ingresó el día 15.01.2024<br/>Prueba escribir SELECT * FROM Instrucciones.</p>
       </section>
-      <section class="Header">
+      
+        <!-- EL Titulo  del juego  -->   
+        <section class="Header">
         <div class="Boxheader"></div>
         <h1 class="Titulo">Agatha</h1>
         <h2 class="Subheader">Misterio a toda pastilla</h2>

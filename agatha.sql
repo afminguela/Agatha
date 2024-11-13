@@ -18,6 +18,15 @@ CREATE SCHEMA IF NOT EXISTS `HOSPITAL` DEFAULT CHARACTER SET utf8mb4 COLLATE utf
 USE `HOSPITAL` ;
 
 -- -----------------------------------------------------
+-- Table `HOSPITAL`.`Instrucciones`
+-- -----------------------------------------------------
+
+CREATE TABLE IF NOT EXISTS `HOSPITAL`.`Instrucciones` (
+  `id_Instrucciones` INT NOT NULL AUTO_INCREMENT,
+  `Instrucciones` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id_Instrucciones`))
+ENGINE = InnoDB;
+-- -----------------------------------------------------
 -- Table `HOSPITAL`.`pacientes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `HOSPITAL`.`pacientes` (
@@ -365,3 +374,17 @@ INSERT INTO Informe (idP, idPM, idT, idM, Fecha_Creacion, detalles, Solucion) VA
 (1, 6, 4, 1, '2024-01-14', 'El paciente solicitó una caja fuerte para guardar documentos importantes, mencionando que "alguien" había intentado acceder a su habitación', 0), -- Pista importante
 (1, 4, 2, 2, '2024-01-15', 'Las cámaras de seguridad del pasillo estuvieron fuera de servicio durante 15 minutos coincidiendo con el cambio de turno', 0); -- Pista final
 
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('1', 'Bienvenidx a Agatha');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('2', 'Necesitarás usar comandos de SQL para resolver el misterio');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('3', 'El comando SELECT se utiliza para obtener datos de una base de datos. Es el equivalente a decir \"selecciona\" en inglés.');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('4', 'su forma de escribirlo es: SELECT columna_que_quiero FROM nombre_de_tabla_que_consulto;');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('5', 'Para Obtener todos los nombres de una tabla: ');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('6', 'SELECT nombre FROM pacientes;');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('7', 'Puedes obtener todos los valores de todas las columnas de una tabla');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('8', 'SELECT * FROM pacientes;');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('9', 'Para filtrar los  usamos WHERE y lo igualamos (=, o LIKE ) al valor que queremos:');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('10', 'SELECT * FROM pacientes WHERE nombre like \'Victor\'');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('11', 'ORDER BY te permite ordenar los datos alfabéticamente o por valor numérico');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('12', 'Sobretodo, Asegúrate de escribir correctamente el nombre de la tabla y las columnas.');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', '');
+INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', 'Las tablas del hospital se llaman: pacientes, personal_medico, visitas, tratamientos, medicaciones, motivos_visitas, informe e instrucciones');
