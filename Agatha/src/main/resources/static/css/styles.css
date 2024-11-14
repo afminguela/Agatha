@@ -130,7 +130,7 @@ body {
   background: #333333;
   border-radius: 11px;
   border: 9px #4FDDB5 solid;
-  overflow-y: auto;
+  overflow-y:auto;
   white-space: pre-wrap;
   word-wrap: break-word;
   
@@ -140,7 +140,7 @@ body {
     color: #00FF00;
     font-family: monospace;
     padding: 10px;
-    overflow-y: auto;
+/*    overflow-y: auto;*/
     height: 100%;
 }
 
@@ -160,7 +160,7 @@ body {
 }
 
 /* ---------  El block de notas -------------------------*/
-.Notes {
+/*.Notes {
   width: 625px;
   height: 756px;
   left: 51px;
@@ -215,6 +215,92 @@ body {
   position: absolute;
   border-radius: 16px;
   z-index: 0;
+}*/
+
+.Notes {
+  width: 625px;
+  height: 756px;
+  left: 51px;
+  top: 253px;
+  position: absolute;
+  z-index: 0;
+  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
+  
+
+}
+
+.fondoNotes {
+  width: 638px;
+  height: 770px;
+  left: -7px;
+  top: -5px;
+  position: absolute;
+  z-index: 0;
+  background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%);
+  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
+  border-radius: 20px;
+  
+  filter: blur(6.60px);
+  backdrop-filter: blur(4px);
+}
+
+.NoteContent {
+  position: relative;
+  width: 556px;
+  height: 655px;
+  left: 34px;
+  top: 73px;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.Texturacuaderno {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 16px;
+  z-index: 1;
+}
+
+.PistaEncontrada {
+  position: absolute;
+  top: 10px;
+  left: 50px;
+  width: 90%;
+  height: 50%;
+  overflow-y: auto;
+  z-index: 3;
+  padding: 10px;
+  box-sizing: border-box;
+  font-size: 20px;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.Divnotas {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  width: 90%;
+  height: 50%;
+  background: transparent;
+  border: none;
+  z-index: 3;
+  padding: 10px;
+  box-sizing: border-box;
+  resize: none;
+  font-size: 20px;
+}
+
+.Pcuaderno {
+  left: 26px;
+  top: -60px;
+  position: absolute;
+  color: black;
+  font-size: 24px;
+  font-weight: 400;
+  word-wrap: break-word;
+  z-index: 4;
 }
 
 /* ---------  El bloque de instrucciones del juego ----------*/

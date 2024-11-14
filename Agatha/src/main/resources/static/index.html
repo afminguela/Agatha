@@ -29,23 +29,24 @@
         <span class="Enter">Enter</span>
       </button>
       
-        <!-- El input del teclado, aqui escribimos los comandos --> 
+        <!-- El output, esta es la terminal y donde se ve los resultados de las consultas SQL  --> 
         <div id="Terminal" class="Terminal">
         <div class="terminal-screen"></div>
       </div>
       
         <!-- El input del teclado, aqui escribimos los comandos --> 
-        <textarea id="queryInput" class="Input" aria-label="Ingrese su comando aquí"></textarea>
+        <textarea id="queryInput" class="Input" aria-label="Escribe aqui tus comanodos"></textarea>
       
         <!-- EL cuaderno de Notas  -->
       <section class="Notes">
-          <div class="NoteContent">
-          <textarea class="Divnotas" aria-label="Notas sobre pistas encontradas" placeholder="Escribe aqui tus notas"></textarea>
-        <p class="Pcuaderno">Este es tu cuaderno de notas:</p>
-        <img class="Texturacuaderno" src="media/Lined-Notebook.png" alt="Textura de cuaderno" />
-        <!-- <div class="PistaEncontrada"></div>-->
-          </div>
-      </section>
+          <div class="fondoNotes"></div>
+  <div class="NoteContent">
+    <img class="Texturacuaderno" src="media/Lined-Notebook.png" alt="Textura de cuaderno" />
+    <div class="PistaEncontrada" aria-label="Notas sobre pistas encontradas"></div>  
+    <textarea class="Divnotas" aria-label="Tus Notas sobre pistas encontradas o lo que quieras" placeholder="Escribe aqui tus notas"></textarea>
+    <p class="Pcuaderno">Este es tu cuaderno de notas:</p>
+  </div>
+</section>
         
         
         <!-- El Bloque con la introduccion, aqui damos el primer comando en el p -->  

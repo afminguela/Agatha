@@ -22,7 +22,7 @@ public class QueryController {
     @PostMapping("/query")
     public ResponseEntity<Object> executeQuery(@RequestBody QueryRequest request) {
         String query = request.getQuery().toLowerCase();
-        // Validación básica de seguridad
+        // Validación básica de seguridad mediante comparacion de palabras
         if (!isQuerySafe(query)) {
             return ResponseEntity.badRequest().body("Query no permitida");
         }
@@ -35,24 +35,7 @@ public class QueryController {
         }
     }
 
-    @PostMapping("/reset")
-    public ResponseEntity<String> resetDatabase() {
-        try {
-            // Ejecutar script de reinicio
-            ClassPathResource resource = new ClassPathResource("reset.sql");
-            String[] statements = new String(Files.readAllBytes(resource.getFile().toPath()))
-                    .split(";");
-            for (String statement : statements) {
-                if (!statement.trim().isEmpty()) {
-                    jdbcTemplate.execute(statement);
-                }
-            }
-            return ResponseEntity.ok("Base de datos reiniciada");
-        } catch (Exception e) {
-            return ResponseEntity.badRequest().body("Error al reiniciar: " + e.getMessage());
-        }
-    }
-
+    
     private boolean isQuerySafe(String query) {
         // Lista blanca de comandos permitidos
         if (!query.startsWith("select")) {

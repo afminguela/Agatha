@@ -1,15 +1,23 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {   
+    
+    // algunas variables para guardar las entradas del DOM;
+    
   const terminal = document.getElementById('Terminal');
   const input = document.getElementById('queryInput');
-  const notebook = document.querySelector('.NoteContent');
+  const notebook = document.querySelector('.PistaEncontrada');
   const enterButton = document.querySelector('.Enterbutton');
   const resetButton = document.querySelector('.Deletebutton');
 
+// Variables para crear una lista de comandos ya introducidos, para que se puedan volver a usar. 
   let commandHistory = [];
   let currentHistoryIndex = -1;
  
+ 
+ // funcion que pinta en el terminal los datos que llegan desde BK 
   function addToTerminal(text, isTable = false) {
   const screen = terminal.querySelector('.terminal-screen');
+  
+      // si es una tabla, le da formato de tabla a la entrada, separando las columnas. 
   if (isTable) {
     screen.innerHTML += `\n${text}`;
   } else {
@@ -18,19 +26,23 @@ document.addEventListener('DOMContentLoaded', function() {
   screen.scrollTop = screen.scrollHeight;
 }
 
+
+// Funcion para pintar en el cuaderno de notas cuando hay alguna pista importante. 
   function addToNotes(text) {
     notebook.innerHTML += `\n- ${text}`;
   }
 
+
+// Funcion que ejecuta la llamada al BK, cuando pulsamos Enter. 
   async function executeQuery() {
-  const query = input.value;
+  const query = input.value; //guarda la query entrada en el input en una variable 
   if (!query) return;
 
-  commandHistory.push(query);
+  commandHistory.push(query); // la guarda para poder volver a usar dando a la tecla UP del teclado
   currentHistoryIndex = commandHistory.length;
 
   try {
-    const response = await fetch('/api/query', {
+    const response = await fetch('/api/query', {  // pasa la query al BK
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -38,25 +50,27 @@ document.addEventListener('DOMContentLoaded', function() {
       body: JSON.stringify({ query: query })
     });
 
-    const data = await response.json();
+    const data = await response.json();  // recibe la respuesta del BK 
     if (response.ok) {
       addToTerminal(`Ejecutando: ${query}`);
       if (Array.isArray(data)) {
   if (data.length > 0) {
     const tableOutput = formatAsTable(data);
-    addToTerminal(tableOutput, true);
+    addToTerminal(tableOutput, true);        // 
   } else {
     addToTerminal("No se encontraron resultados.");
   }
   
-  // Detectar pistas importantes
+  // ¡¡¡ PARA CAMBIAR EL MISTERIO ES AQUI!!!
+  // 
+  // Detectar pistas importantes y disparar la funcion addToNotes para verlas en el cuaderno.
   data.forEach(row => {
-    if (row.detalles && (
-      row.detalles.includes('Digoxina') ||
+    if (row.detalles && (            // comprueba linea a linea si tiene las palabras clave.
+      row.detalles.includes('Digoxina') ||  
       row.detalles.includes('manipulación') ||
       row.detalles.includes('documentos confidenciales')
     )) {
-      addToNotes(`¡Pista encontrada!: ${row.detalles}`);
+      addToNotes(`¡Pista encontrada!: ${row.detalles}`);  // printa el mensaje
     }
   });
 } else {
@@ -66,9 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
   } catch (error) {
     addToTerminal(`Error: ${error.message}`);
   } finally {
-    input.value = '';
+    input.value = '';  // limpia el Input cuando acaba. 
   }
 }
+
+// Funcion para formatear los datos como tabla, como los mapea los convierte en clave:valor
 
 function formatAsTable(data) {
   if (data.length === 0) return "No se encontraron resultados.";
@@ -93,6 +109,8 @@ function formatAsTable(data) {
   // Combinar todo
   return `${header}\n${separator}\n${rows.join('\n')}`;
 }
+
+// funcion para limpiar el terminal de datos 
   async function resetTerminal() {
     try {
         const terminalScreen = terminal.querySelector('.terminal-screen');
@@ -107,14 +125,25 @@ function formatAsTable(data) {
     }
   }
 
+// EVENT LISTENERS --- 
+   
+    //Botones de Enter y delete  
+    
   enterButton.addEventListener('click', executeQuery);
   resetButton.addEventListener('click', resetTerminal);
 
+    
+   // Para accesibilidad y poder usar el teclado en caso de que el ratón no vaya bien para 
   input.addEventListener('keydown', function(e) {
+      
+      // enter dispara la funcion executeQuery()
     if (e.key === 'Enter') {
-      executeQuery();
+      executeQuery();            
+      
+         // las flechas del teclado nos navegan por los comandos introducidos 
     } else if (e.key === 'ArrowUp') {
-      if (currentHistoryIndex > 0) {
+        
+       if (currentHistoryIndex > 0) {
         currentHistoryIndex--;
         this.value = commandHistory[currentHistoryIndex];
       }
