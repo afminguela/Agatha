@@ -1,6 +1,6 @@
 body {
   width: 1440px;
-  height: 1024px;
+  height: 690px;
   background: #46c39f;
   font-family: 'Typewriter', sans-serif;
                                                 
@@ -10,11 +10,11 @@ body {
   width: 1440px;
   height: 1024px;
   left: 10px;
-  top: 10px;
+  top: -50px;
   position: absolute;
   background: #47C3A0;
 }
-/*-------- Boton de Borrar------*/
+/*-------- Boton de Borrar terminal ------*/
 
 .Deletebutton {
   width: 114px;
@@ -62,8 +62,61 @@ body {
   top: 6px;
   position: absolute;
   color: black;
-  font-size: 24px;
-  font-family: American Typewriter;
+  font-size: 23px;
+  font-weight: 400;
+  font-family:'typewritter', sans-serif;
+  word-wrap: break-word;
+}
+/* ------------- Boton borrar notas--------*/
+
+.Notesbutton {
+  width: 114px;
+  height: 47px;
+  left: 450px;
+  top: -60px;
+  border-radius: 20px;
+  position: absolute;
+}
+
+.Botonazulrojo {
+  width: 114px;
+  height: 53px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+}
+
+.FbotonNotes2 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 6px;
+  position: absolute;
+  background: linear-gradient(90deg, #DD4F67 0%, #2B3977 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.FbotonNotes1 {
+  width: 114px;
+  height: 47px;
+  left: 0px;
+  top: 0px;
+  position: absolute;
+  background: linear-gradient(90deg, #DD4F67 0%,  #2B3977 100%);
+  border-radius: 20px;
+  border: 1px #B3E5F1 solid;
+}
+
+.BorrarNotes {
+  width: 79px;
+  height: 35px;
+  left: 18px;
+  top: 15px;
+  position: absolute;
+  color: black;
+  font-size: 23px;
+  font-family: 'typewritter', sans-serif;
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -115,9 +168,10 @@ body {
   top: 6px;
   position: absolute;
   color: black;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 400;
   word-wrap: break-word;
+  font-family: 'typewriter';
 }
 
 /*--------La terminal ----------------*/
@@ -160,62 +214,7 @@ body {
 }
 
 /* ---------  El block de notas -------------------------*/
-/*.Notes {
-  width: 625px;
-  height: 756px;
-  left: 51px;
-  top: 253px;
-  position: absolute;
-  z-index: 0
-}
- .NoteContent {
-    position: relative;
-    z-index: 1;
-  }
 
-.Divnotas {
-  width: 605px;
-  height: 736px;
-  left: 10px;
-  top: 10px;
-  position: absolute;
-  background: linear-gradient(90deg, rgba(79.33, 220.98, 180.84, 0.54) 0%, rgba(190.33, 204.14, 200.23, 0.54) 100%);
-  box-shadow: 6.599999904632568px 6.599999904632568px 6.599999904632568px;
-  border-radius: 20px;
-  border: 1px #F6F3F3 solid;
-  filter: blur(6.60px);
-  backdrop-filter: blur(4px);
-}
-
-.Pcuaderno {
-  left: 26px;
-  top: 0px;
-  position: absolute;
-  color: black;
-  font-size: 24px;
-  
-  font-weight: 400;
-  word-wrap: break-word;
-}
-.NoteContent {
-   width: 556px;
-  height: 655px;
-  left: 34px;
-  top: 73px;
-  position: absolute;
-  border-radius: 16px;
-  z-index: 2; 
-    
-}
-.Texturacuaderno {
-  width: 556px;
-  height: 655px;
-  left: 34px;
-  top: 73px;
-  position: absolute;
-  border-radius: 16px;
-  z-index: 0;
-}*/
 
 .Notes {
   width: 625px;
@@ -330,10 +329,10 @@ body {
   width: 589px;
   height: 43px;
   left: 36px;
-  top: 0px;
+  top: -10px;
   position: absolute;
   color: black;
-  font-size: 24px;
+  font-size: 23px;
   font-weight: 400;
   word-wrap: break-word;
 }

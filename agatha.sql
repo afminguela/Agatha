@@ -388,3 +388,14 @@ INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VAL
 INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('12', 'Sobretodo, Asegúrate de escribir correctamente el nombre de la tabla y las columnas.');
 INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', '');
 INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', 'Las tablas del hospital se llaman: pacientes, personal_medico, visitas, tratamientos, medicaciones, motivos_visitas, informe e instrucciones');
+
+CREATE TABLE IF NOT EXISTS `HOSPITAL`.`solucion` (
+  `id_solucion` INT NOT NULL, 
+  `sospechoso` VARCHAR (100) NULL,
+  `idPM`INT Null,
+  `Comentario` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id_solucion`))
+ENGINE = InnoDB;
+INSERT INTO `hospital`.`solucion` (`id_solucion`, `sospechoso`,`Comentario`) VALUES ('1', 'Juan Díaz', 'Enhorabuena!!!, has cogido al asesino Juan díaz, fue contratado por el socio de Victor para darle una dosis extra de la medicación a la que era alérgico');
+
+

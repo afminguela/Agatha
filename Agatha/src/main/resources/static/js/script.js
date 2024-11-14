@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const notebook = document.querySelector('.PistaEncontrada');
   const enterButton = document.querySelector('.Enterbutton');
   const resetButton = document.querySelector('.Deletebutton');
-
+  const notesButton = document.querySelector('.Notesbutton');
+  
 // Variables para crear una lista de comandos ya introducidos, para que se puedan volver a usar. 
   let commandHistory = [];
   let currentHistoryIndex = -1;
@@ -124,14 +125,27 @@ function formatAsTable(data) {
       addToTerminal(`Error al reiniciar: ${error.message}`);
     }
   }
-
+  // funcion para limpiar el cuaderno de pistas... por si hay demasiadas.
+async function resetNotes() {
+    try {
+//        const notebook = notebook.querySelector('.PistaEncontrada');
+    if (notebook) {
+      notebook.innerHTML = ``;
+  
+          }
+    
+         
+    } catch (error) {
+      addToTerminal(`Error al reiniciar: ${error.message}`);
+    }
+  }
 // EVENT LISTENERS --- 
    
     //Botones de Enter y delete  
     
   enterButton.addEventListener('click', executeQuery);
   resetButton.addEventListener('click', resetTerminal);
-
+  notesButton.addEventListener('click', resetNotes)
     
    // Para accesibilidad y poder usar el teclado en caso de que el ratón no vaya bien para 
   input.addEventListener('keydown', function(e) {
