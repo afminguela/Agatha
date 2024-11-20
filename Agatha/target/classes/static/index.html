@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agatha - Hospital Database</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.cdnfonts.com/css/typewriter" rel="stylesheet">
+                
+</head>
+<body>
+  <body>
+  <main class="Container">
+    <section class="PantallaDeJuego">
+      
+        <button id="resetButton" class="Deletebutton" aria-label="Borrar comandos anteriores">
+        <span class="Botonazul">
+          <span class="Fbotondelete2"></span>
+          <span class="Fbotondelete1"></span>
+        </span>
+        <span class="Borrar">Borrar</span>
+      </button>
+      
+        <button id="enterButton" class="Enterbutton" aria-label="Ejecutar comando">
+        <span class="Botonverde">
+          <span class="Fbotonenter2"></span>
+          <span class="Fbotonenter1"></span>
+        </span>
+        <span class="Enter">Enter</span>
+      </button>
+      
+        <!-- El output, esta es la terminal y donde se ve los resultados de las consultas SQL  --> 
+        <div id="Terminal" class="Terminal">
+        <div class="terminal-screen"></div>
+      </div>
+      
+        <!-- El input del teclado, aqui escribimos los comandos --> 
+        <textarea id="queryInput" class="Input" aria-label="Escribe aqui tus comanodos"></textarea>
+      
+        <!-- EL cuaderno de Notas  -->
+      <section class="Notes" aria-label="Notas sobre pistas encontradas">
+          <div class="fondoNotes"></div>
+  <div class="NoteContent">
+    <img class="Texturacuaderno" src="media/Lined-Notebook.png" alt="Textura de cuaderno" />
+    <div class="PistaEncontrada" ></div>  
+    <textarea class="Divnotas" aria-label="Tus Notas sobre pistas encontradas o lo que quieras" placeholder="Escribe aqui tus notas"></textarea>
+
+    <p class="Pcuaderno">Este es tu cuaderno de notas:</p>
+              <button id="notesButton" class="Notesbutton" aria-label="Borrar comandos anteriores">
+        <span class="Botonazulrojo">
+          <span class="FbotonNotes2"></span>
+          <span class="FbotonNotes1"></span>
+        </span>
+        <span class="BorrarNotes">Borrar</span>
+      </button>
+  
+  </div>
+</section>
+        
+        
+        <!-- El Bloque con la introduccion, aqui damos el primer comando en el p -->  
+      <section class="Intro">
+        <div class="Boxintro"></div>
+        <p class="Pintro">Este es tu ordenador, úsalo para acceder a la base de datos y encontrar quién mató al Sr. Montenegro. Sabemos que ingresó el día 15.01.2024. Prueba a escribir:<br/> SELECT * FROM Instrucciones;</p>
+      </section>
+      
+        <!-- EL Titulo  del juego  -->   
+        <section class="Header">
+        <div class="Boxheader"></div>
+        <h1 class="Titulo">Agatha</h1>
+        <h2 class="Subheader">Misterio a toda pastilla</h2>
+      </section>
+        
+    </section>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+
+</html>
