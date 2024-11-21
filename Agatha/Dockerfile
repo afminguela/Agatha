@@ -4,6 +4,10 @@
 
 FROM amazoncorretto:23-alpine-jdk 
 
+Workdir /app
+
 COPY target/Agatha-0.0.1-SNAPSHOT.jar  app.jar
+
+EXPOSE 8080
 
 entrypoint ["java" , "-jar" , "/app.jar"]
