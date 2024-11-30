@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  agatha:
+    image: agatha
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      JAVA_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005,quiet=y
+    ports:
+      - 8080:8080
+      - 3360:3360
+      - 5005:5005

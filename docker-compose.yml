@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+  agatha:
+    image: agatha
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+      - 3360:3360
