@@ -1,11 +1,20 @@
-version: '3.4'
-
 services:
-  agatha:
-    image: agatha
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+  core:
+    image: amazoncorretto:23-alpine-jdk
+    restart: always
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/HOSPITAL
     ports:
-      - 8080:8080
-      - 3360:3360
+      - ${AGATHA_PORT:-8080}:8080
+    volumes:
+      - $PWD/Agatha/target/Agatha-0.0.1-SNAPSHOT.jar:/app.jar
+    command: java -jar /app.jar
+  db:
+    image: mysql:8.0
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=1234
+    volumes:
+      - $PWD/database/agatha.sql:/docker-entrypoint-initdb.d/agatha.sql
