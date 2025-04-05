@@ -21,9 +21,9 @@ public class QueryController {
 
     @PostMapping("/query")
     public ResponseEntity<Object> executeQuery(@RequestBody QueryRequest request) {
-        String query = request.getQuery().toLowerCase();
+        String query = request.getQuery();
         // Validación básica de seguridad mediante comparacion de palabras
-        if (!isQuerySafe(query)) {
+        if (!isQuerySafe(query.toLowerCase())) {
             return ResponseEntity.badRequest().body("Query no permitida");
         }
 
