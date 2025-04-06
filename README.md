@@ -45,6 +45,7 @@ Prevención de inyección SQL
 
 ## 📚 Estructura de la Base de Datos
 ### Tablas Principales
+```
 -- Estructura básica de las tablas principales
 CREATE TABLE Pacientes (
     id INT PRIMARY KEY,
@@ -73,6 +74,7 @@ CREATE TABLE Motivos_Visitas (...);
 CREATE TABLE Instrucciones (...);
 CREATE TABLE Informe (...);
 CREATE TABLE Solucion (...);
+```
 
 ## 💻 Instalación y Configuración
 ### Requisitos Previos
@@ -82,28 +84,57 @@ MySQL
 SpringBoot
 
 
+
+### Docker compose
+Clonar el repositorio:
+
+```
+$ git clone <https://github.com/afminguela/Agatha.git>
+$ cd Agatha
+```
+
+Compilar:
+
+```
+$ (cd Agatha; mvn clean install)
+```
+
+Ejecutar docker compose:
+
+```
+$ docker compose up -d
+```
+
+## Instrucciones antiguas
+
 ### Pasos de Instalación
 Clonar el repositorio:
 
-
+```
 git clone <https://github.com/afminguela/Agatha.git>
 cd Agatha
+```
 
 ### Configurar la base de datos:
 
-
+```
 mysql -u root -p < agatha.sql
+```
 
 ### Configurar el archivo application.properties:
+
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/HOSPITAL
 spring.datasource.username=your_username
 spring.datasource.password=your_password
+```
 
 ### Compilar y ejecutar:
 
-
+```
 mvn clean install
 java -jar target/Agatha-0.0.1-SNAPSHOT.jar
+```
 
 ## 🔍 Características de Seguridad
 Validación de consultas SQL
@@ -134,6 +165,8 @@ Revisa las instrucciones iniciales
 
 ### 2. Comandos SQL Básicos
 Consultas Simples
+
+```
 -- Consultar todos los pacientes
 SELECT * FROM Pacientes;
 
@@ -153,6 +186,7 @@ SELECT p.nombre, v.fecha, pm.nombre as doctor
 FROM Pacientes p
 JOIN Visitas v ON p.id = v.id_paciente
 JOIN Personal_Medico pm ON v.id_medico = pm.id;
+```
 
 ### 3. Sistema de Pistas
 El juego proporciona pistas a través de:

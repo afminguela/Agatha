@@ -1,3 +1,5 @@
+SET FOREIGN_KEY_CHECKS=0;
+
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -374,24 +376,24 @@ INSERT INTO Informe (idP, idPM, idT, idM, Fecha_Creacion, detalles, Solucion) VA
 (1, 6, 4, 1, '2024-01-14', 'El paciente solicitó una caja fuerte para guardar documentos importantes, mencionando que "alguien" había intentado acceder a su habitación', 0), -- Pista importante
 (1, 4, 2, 2, '2024-01-15', 'Las cámaras de seguridad del pasillo estuvieron fuera de servicio durante 15 minutos coincidiendo con el cambio de turno', 0); -- Pista final
 
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('1', '----------  Bienvenidx a Agatha-----------');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('2', 'Para resolver el misterio vas a necesitar aprender algunos comandos de SQL.');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('3', 'El comando SELECT se utiliza para obtener datos de una base de datos. Es el equivalente a decir \"selecciona\" en inglés.');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('4', 'su forma de escribirlo es: SELECT columna_que_quiero FROM nombre_de_tabla_que_consulto;');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('5', '- Para Obtener todos los nombres de una tabla usa: ');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('6', 'SELECT nombre FROM pacientes;');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('7', '- Puedes obtener todos los valores de todas las columnas de una tabla usando *');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('8', 'SELECT * FROM pacientes;');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('9', '- Para filtrar los  usamos WHERE y lo igualamos (= si es un numero , o LIKE \'%nombre%\' si es un nombre) al valor que queremos:');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('10', 'SELECT * FROM pacientes WHERE nombre like \'%Victor%\'; o SELECT * FROM pacientes WHERE idP = 1; ');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('11', '- ORDER BY te permite ordenar los datos alfabéticamente o por valor numérico');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('12', '- Los id son muy utiles, pues son los numeros asignados a cada paciente o médico, usalos');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', 'puedes usarlos para filtrar si no recuerdas el nombre. ');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', '- Las tablas del hospital ( y los ID)  se llaman: pacientes (idP), personal_medico (idPM), visitas, tratamientos, medicaciones, motivos_visitas, informe e instrucciones');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('15', '- Cuando tengas idea de la solución usa la consulta para saber si has acertado:');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'SELECT * FROM solucion WHERE sospechoso LIKE \'%Aqui_el_nombre_del_sospechoso%\'; ');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('17', '');
-INSERT INTO `hospital`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('18', '+-+-+-+-+-+-+-+-+-+-+-¡¡Suerte!! -+-+-+-+-+-+-+-+-++-          ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('1', '----------  Bienvenidx a Agatha-----------');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('2', 'Para resolver el misterio vas a necesitar aprender algunos comandos de SQL.');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('3', 'El comando SELECT se utiliza para obtener datos de una base de datos. Es el equivalente a decir \"selecciona\" en inglés.');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('4', 'su forma de escribirlo es: SELECT columna_que_quiero FROM nombre_de_tabla_que_consulto;');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('5', '- Para Obtener todos los nombres de una tabla usa: ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('6', 'SELECT nombre FROM pacientes;');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('7', '- Puedes obtener todos los valores de todas las columnas de una tabla usando *');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('8', 'SELECT * FROM pacientes;');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('9', '- Para filtrar los  usamos WHERE y lo igualamos (= si es un numero , o LIKE \'%nombre%\' si es un nombre) al valor que queremos:');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('10', 'SELECT * FROM pacientes WHERE nombre like \'%Victor%\'; o SELECT * FROM pacientes WHERE idP = 1; ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('11', '- ORDER BY te permite ordenar los datos alfabéticamente o por valor numérico');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('12', '- Los id son muy utiles, pues son los numeros asignados a cada paciente o médico, usalos');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', 'puedes usarlos para filtrar si no recuerdas el nombre. ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', '- Las tablas del hospital ( y los ID)  se llaman: pacientes (idP), personal_medico (idPM), visitas, tratamientos, medicaciones, motivos_visitas, informe e instrucciones');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('15', '- Cuando tengas idea de la solución usa la consulta para saber si has acertado:');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'SELECT * FROM solucion WHERE sospechoso LIKE \'%Aqui_el_nombre_del_sospechoso%\'; ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('17', '');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('18', '+-+-+-+-+-+-+-+-+-+-+-¡¡Suerte!! -+-+-+-+-+-+-+-+-++-          ');
 
 
 CREATE TABLE IF NOT EXISTS `HOSPITAL`.`solucion` (
@@ -402,7 +404,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`solucion` (
   `Comentario` VARCHAR(1000) NULL,
   PRIMARY KEY (`id_solucion`))
 ENGINE = InnoDB;
-INSERT INTO `hospital`.`solucion` (`id_solucion`,`idPM`, `sospechoso`,`Comentario`) 
+INSERT INTO `HOSPITAL`.`solucion` (`id_solucion`,`idPM`, `sospechoso`,`Comentario`) 
 VALUES 
 (1,1, 'Dr. Ricardo Manzano', 'Vaya, Fallaste. El culpable sigue suelto.'),
 (2,2,'Dra. Elena Torres', 'Vaya, Fallaste. El culpable sigue suelto.'),

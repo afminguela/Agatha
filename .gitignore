@@ -1,7 +1,6 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-/agathanet/target/
-=======
+.DS_Store
+**/target/
+
 # Compiled class file
 *.class
 
@@ -26,7 +25,36 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
->>>>>>> 08f1c57105a569d930f35b95e3a889b1ccca1de8
-=======
+HELP.md
+## target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
->>>>>>> f3f7b7b5951fa19fafe831a18fd184bafcd2cadd
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
