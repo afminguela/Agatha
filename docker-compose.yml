@@ -1,20 +1,29 @@
 services:
+#primer contenedor, que tiene la aplicación y ademas hace la conexion con el siguiente contenedor.
   core:
     image: amazoncorretto:23-alpine-jdk
     restart: always
     depends_on:
+#nombre del otro container
       - db
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://db:3306/HOSPITAL
     ports:
+# Declara el puerto de la conexión que crea entre los dos containers
       - ${AGATHA_PORT:-8080}:8080
     volumes:
       - $PWD/Agatha/target/Agatha-0.0.1-SNAPSHOT.jar:/app.jar
     command: java -jar /app.jar
+
+
+#segundo contenedor
   db:
     image: mysql:8.0
     restart: always
+    
     environment:
-      - MYSQL_ROOT_PASSWORD=1234
+#Donde se escriben las variables de entorno. en este caso el PW de la DB. 
+          - MYSQL_ROOT_PASSWORD=1234
     volumes:
+#se monta dentro de lo que hay en el lado de la derecha lo que hay en la izquierda. ( PWD present working Directory)
       - $PWD/database/agatha.sql:/docker-entrypoint-initdb.d/agatha.sql
