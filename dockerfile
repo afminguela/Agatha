@@ -56,4 +56,5 @@ ENV MYSQL_ROOT_PASSWORD=1234
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/HOSPITAL
 
 # Ejecutar script de inicio
-CMD ["/start.sh"]
+CMD ["java -jar /app.jar"]
+
