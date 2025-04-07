@@ -1,7 +1,7 @@
 FROM amazoncorretto:23-alpine-jdk
 
 # Instalar herramientas necesarias
-RUN apk add --no-cache mysql mysql-client maven
+RUN apk add --no-cache mysql mysql-client maven bash
 
 # Crear directorio para datos de MySQL
 RUN mkdir -p /var/lib/mysql /var/run/mysqld
@@ -18,43 +18,35 @@ RUN mvn clean package -DskipTests
 # Copiar el archivo SQL de inicialización
 COPY ./database/agatha.sql /docker-entrypoint-initdb.d/
 
-# Crear script de inicio
-RUN echo '#!/bin/sh\n\
-\n\
-# Iniciar MySQL\n\
-echo "Iniciando MySQL..."\n\
-mkdir -p /var/run/mysqld\n\
-chown -R mysql:mysql /var/run/mysqld\n\
-mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql\n\
-mysqld --user=mysql --datadir=/var/lib/mysql &\n\
-\n\
-# Esperar a que MySQL esté disponible\n\
-echo "Esperando a que MySQL esté disponible..."\n\
-while ! mysqladmin ping -h localhost --silent; do\n\
-    sleep 1\n\
-done\n\
-\n\
-# Crear base de datos HOSPITAL si no existe\n\
-echo "Configurando la base de datos..."\n\
-mysql -u root -p$MYSQL_ROOT_PASSWORD -e "CREATE DATABASE IF NOT EXISTS HOSPITAL;"\n\
-\n\
-# Importar el archivo SQL\n\
-echo "Importando esquema de base de datos..."\n\
-mysql -u root -p$MYSQL_ROOT_PASSWORD HOSPITAL < /docker-entrypoint-initdb.d/agatha.sql\n\
-\n\
-# Iniciar la aplicación Java\n\
-echo "Iniciando la aplicación Java..."\n\
-java -jar /app/Agatha/target/*.jar\n' > /start.sh
-
-RUN chmod +x /start.sh
-
-# Exponer puertos para la aplicación y MySQL
-EXPOSE 8080 3306
-
-# Definir variables de entorno para MySQL
+# Variables de entorno para MySQL
 ENV MYSQL_ROOT_PASSWORD=1234
 ENV SPRING_DATASOURCE_URL=jdbc:mysql://localhost:3306/HOSPITAL
 
-# Ejecutar script de inicio
-CMD ["java -jar /app/Agatha/target/*.jar"]
+# Exponer puertos
+EXPOSE 8080 3306
+
+# Instrucción de inicio (todo en bash para mayor flexibilidad)
+ENTRYPOINT ["/bin/bash", "-c", "\
+  echo 'Iniciando MySQL...'; \
+  mkdir -p /var/run/mysqld; \
+  chown -R mysql:mysql /var/run/mysqld; \
+  mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql; \
+  mysqld --user=mysql --datadir=/var/lib/mysql & \
+  echo 'Esperando a que MySQL esté disponible...'; \
+  while ! mysqladmin ping -h localhost --silent; do \
+    sleep 1; \
+  done; \
+  echo 'Configurando base de datos...'; \
+  mysql -u root -p$MYSQL_ROOT_PASSWORD -e \"CREATE DATABASE IF NOT EXISTS HOSPITAL;\"; \
+  echo 'Importando esquema...'; \
+  mysql -u root -p$MYSQL_ROOT_PASSWORD HOSPITAL < /docker-entrypoint-initdb.d/agatha.sql; \
+  echo 'Iniciando aplicación Java...'; \
+  JAR_FILE=$(find /app/Agatha/target -name \"*.jar\" | head -n 1); \
+  if [ -z \"$JAR_FILE\" ]; then \
+    echo 'Error: no se encontró el archivo .jar'; \
+    exit 1; \
+  fi; \
+  java -jar \"$JAR_FILE\" \
+"]
+
 
