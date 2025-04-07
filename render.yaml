@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: agatha-app
+    env: docker
+    plan: free
+    repo: https://github.com/tu-usuario/tu-repo
+    region: oregon
+    branch: main
+    dockerContext: .
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: 1234
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://localhost:3306/HOSPITAL
+    buildCommand: ""   # No hace falta porque usas Dockerfile
+    startCommand: ""   # Se usa lo que pongas en ENTRYPOINT o CMD
