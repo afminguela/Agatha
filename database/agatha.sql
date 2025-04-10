@@ -7,13 +7,6 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema mydb
--- -----------------------------------------------------
--- -----------------------------------------------------
--- Schema HOSPITAL
--- -----------------------------------------------------
-
--- -----------------------------------------------------
 -- Schema HOSPITAL
 -- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `HOSPITAL` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci ;
@@ -42,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`pacientes` (
   `Alergias` VARCHAR(100) NULL,
   PRIMARY KEY (`idP`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 22
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -57,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`personal_medico` (
   `especialidad` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`idPM`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 16
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -84,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`medicaciones` (
     FOREIGN KEY (`idPM`)
     REFERENCES `HOSPITAL`.`personal_medico` (`idPM`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -106,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`visitas` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 17
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -126,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`motivos_visitas` (
     ON DELETE NO ACTION
     ON UPDATE CASCADE)
 ENGINE = InnoDB
-AUTO_INCREMENT = 9
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -153,7 +146,7 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`tratamientos` (
     FOREIGN KEY (`idPM`)
     REFERENCES `HOSPITAL`.`personal_medico` (`idPM`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 16
+
 DEFAULT CHARACTER SET = utf8mb4
 COLLATE = utf8mb4_0900_ai_ci;
 
@@ -198,13 +191,24 @@ CREATE TABLE IF NOT EXISTS `HOSPITAL`.`Informe` (
 ENGINE = InnoDB;
 
 
+CREATE TABLE IF NOT EXISTS `HOSPITAL`.`solucion` (
+  `id_solucion` INT NOT NULL, 
+  `idPM`INT Null,
+  `sospechoso` VARCHAR (1000) NULL,
+  `Comentario` VARCHAR(1000) NULL,
+  PRIMARY KEY (`id_solucion`))
+ENGINE = InnoDB;
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
 -- ---------------------------------------------------------------------------------
--- ---------------------    Inserción de datos 
+-- ---------------------    Inserción de datos -------------------------------------
+
+-- Insercion de Personal medico 
+
 INSERT INTO personal_medico (nombre, tipo, especialidad) VALUES
 ('Dr. Ricardo Manzano', 'Doctor', 'Cardiología'),
 ('Dra. Elena Torres', 'Doctora', 'Neurología'),
@@ -227,7 +231,9 @@ INSERT INTO personal_medico (nombre, tipo, especialidad) VALUES
 ('Dr. Andrés Vargas', 'Doctor', 'Medicina General'),
 ('Enfermero Roberto Núñez', 'Enfermero', 'Neurología');
 
--- Insertando pacientes
+-- ------------------------------------------------------------------------------------------------------------
+-- Insertando pacientes ---------------------------------------------------------------------------------------
+
 INSERT INTO pacientes (nombre, edad, habitacion, fecha_ingreso, causa_muerte, enfermedad, Alergias) VALUES
 ('Victor Montenegro', 68, 405, '2024-01-15', 'Paro cardíaco', 'Arritmia cardíaca', 'Penicilina'), -- La víctima
 ('María Gómez', 45, 402, '2024-01-10', NULL, 'Neumonía', NULL),
@@ -250,12 +256,15 @@ INSERT INTO pacientes (nombre, edad, habitacion, fecha_ingreso, causa_muerte, en
 ('Pablo Serrano', 57, 419, '2024-01-15', NULL, 'Hepatitis C', NULL),
 ('Lucía Martín', 49, 420, '2024-01-10', NULL, 'Asma', 'Penicilina');
 
--- Insertando tratamientos
+
+-- ----------------------------------------------------------------------------------------
+-- Insertando tratamientos  ---------------------------------------------------------------
+
 INSERT INTO tratamientos (idP, idPM, tipo, fecha, detalles) VALUES
-(1, 1, 'Revisión cardíaca', '2024-01-15', 'Paciente presenta arritmia severa. Requiere monitoreo constante'), -- Pista importante
-(1, 4, 'Administración medicamentos', '2024-01-15', 'Medicación nocturna administrada a las 22:00'),
-(1, 2, 'Consulta neurológica', '2024-01-15', 'Paciente reporta mareos y confusión'),
-(1, 6, 'Evaluación psiquiátrica', '2024-01-14', 'Paciente menciona preocupación por documentos confidenciales'), -- Pista importante
+(1, 1, 'Revisión cardíaca', '2024-01-12', 'Paciente presenta arritmia severa. Requiere monitoreo constante'), -- Pista importante
+(1, 4, 'Administración medicamentos', '2024-01-15', 'Medicación nocturna administrada a las 22:00'), -- Pista mediana
+(1, 2, 'Consulta neurológica', '2024-01-14', 'Paciente reporta mareos y confusión'), -- Pista mediana
+(1, 6, 'Evaluación psiquiátrica', '2024-01-13', 'Paciente menciona preocupación por documentos confidenciales'), -- Pista importante
 (2, 7, 'Terapia respiratoria', '2024-01-15', 'Ejercicios de respiración realizados'),
 (3, 8, 'Control glucemia', '2024-01-15', 'Niveles estables'),
 (4, 10, 'Control presión', '2024-01-15', 'Presión arterial: 140/90'),
@@ -273,10 +282,13 @@ INSERT INTO tratamientos (idP, idPM, tipo, fecha, detalles) VALUES
 (16, 6, 'Terapia grupal', '2024-01-15', 'Participación activa'),
 (17, 3, 'Quimioterapia', '2024-01-15', 'Tercer ciclo completado');
 
--- Insertando medicaciones
+
+-- ------------------------------------------------------------------------------------------------------
+-- Insertando medicaciones ------------------------------------------------------------------------------
+
 INSERT INTO medicaciones (idP, idPM, nombre, dosis, fecha_administracion) VALUES
 (1, 4, 'Amiodarona', '200mg', '2024-01-15'),
-(1, 5, 'Digoxina', '0.25mg', '2024-01-15'), -- Medicación alterada
+(1, 5, 'Penicilina', '0.25mg', '2024-01-15'), -- Medicación alterada
 (1, 4, 'Warfarina', '5mg', '2024-01-15'),
 (2, 9, 'Azitromicina', '500mg', '2024-01-15'),
 (3, 11, 'Insulina', '10U', '2024-01-15'),
@@ -296,9 +308,11 @@ INSERT INTO medicaciones (idP, idPM, nombre, dosis, fecha_administracion) VALUES
 (17, 3, 'Cisplatino', '50mg', '2024-01-15'),
 (18, 4, 'Alprazolam', '0.5mg', '2024-01-15');
 
+-- ------------------------------------------------------------------------------------------------------
 -- Insertando visitas
+
 INSERT INTO visitas (idP, visitante_nombre, relacion, fecha_visita) VALUES
-(1, 'Laura Montenegro', 'Hija', '2024-01-15'),
+(1, 'Laura Montenegro', 'Hija', '2024-01-14'),
 (1, 'Roberto Montenegro', 'Hijo', '2024-01-15'),
 (1, 'Antonio Silva', 'Socio de negocios', '2024-01-14'),
 (1, 'Persona desconocida', 'No especificada', '2024-01-15'), -- Pista importante
@@ -319,7 +333,9 @@ INSERT INTO visitas (idP, visitante_nombre, relacion, fecha_visita) VALUES
 (16, 'Alberto Castro', 'Hermano', '2024-01-15'),
 (17, 'Teresa Jiménez', 'Esposa', '2024-01-15');
 
+-- ------------------------------------------------------------------------------------------------------
 -- Insertando motivos de visitas
+
 INSERT INTO motivos_visitas (idV, motivo) VALUES
 (1, 'Visita rutinaria, discusión sobre documentos de la empresa'), -- Pista importante
 (2, 'Discusión acalorada sobre la herencia familiar'), -- Pista importante
@@ -342,7 +358,9 @@ INSERT INTO motivos_visitas (idV, motivo) VALUES
 (19, 'Consulta sobre alta médica'),
 (20, 'Visita pre-operatoria');
 
--- Completando la tabla de informes
+-- ------------------------------------------------------------------------------------------------------
+-- Insertando de informes
+
 INSERT INTO Informe (idP, idPM, idT, idM, Fecha_Creacion, detalles, Solucion) VALUES
 (1, 1, 1, 1, '2024-01-15', 'Paciente encontrado sin vida a las 23:30. Signos de manipulación en el equipo de monitoreo cardíaco.', 0), -- Informe clave
 (1, 4, 2, 2, '2024-01-15', 'Durante la ronda nocturna se observó agitación inusual en el paciente. La dosis de medicación parecía correcta según el registro.', 0), -- Informe clave
@@ -389,21 +407,21 @@ INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VAL
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('11', '- ORDER BY te permite ordenar los datos alfabéticamente o por valor numérico');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('12', '- Los id son muy utiles, pues son los numeros asignados a cada paciente o médico, usalos');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', 'puedes usarlos para filtrar si no recuerdas el nombre. ');
-INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', '- Las tablas del hospital ( y los ID)  se llaman: pacientes (idP), personal_medico (idPM), visitas, tratamientos, medicaciones, motivos_visitas, informe e instrucciones');
-INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('15', '- Cuando tengas idea de la solución usa la consulta para saber si has acertado:');
-INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'SELECT * FROM solucion WHERE sospechoso LIKE \'%Aqui_el_nombre_del_sospechoso%\'; ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', '- Las tablas del hospital ( y los ID, id+primera letra de la tabla)  se llaman: pacientes (idP), personal_medico (idPM), visitas (idV), tratamientos(idT), medicaciones, motivos_visitas, informe e instrucciones');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('15', '- Cuando tengas idea de la solución usa la funcion especial CALL ');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'CALL el_asesino_es('aqui escribes el nombre el asesino');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('17', '');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('18', '+-+-+-+-+-+-+-+-+-+-+-¡¡Suerte!! -+-+-+-+-+-+-+-+-++-          ');
 
+-- ------------------------------------------------------------------------------------------------------
+-- ------------------------------------        Soluciones         ---------------------------------------
+-- ------------------------------------------------------------------------------------------------------
 
-CREATE TABLE IF NOT EXISTS `HOSPITAL`.`solucion` (
-  `id_solucion` INT NOT NULL, 
-  `idPM`INT Null,
-  `sospechoso` VARCHAR (1000) NULL,
-  
-  `Comentario` VARCHAR(1000) NULL,
-  PRIMARY KEY (`id_solucion`))
-ENGINE = InnoDB;
+
+
+-- ------------------------------------------------------------------------------------------------------
+-- Insertando de soluciones       -----------------------------------------------------------------
+
 INSERT INTO `HOSPITAL`.`solucion` (`id_solucion`,`idPM`, `sospechoso`,`Comentario`) 
 VALUES 
 (1,1, 'Dr. Ricardo Manzano', 'Vaya, Fallaste. El culpable sigue suelto.'),
@@ -427,3 +445,22 @@ VALUES
 (19,19,'Dr. Andrés Vargas', 'Vaya, Fallaste. El culpable sigue suelto.'),
 (20,20,'Enfermero Roberto Núñez', 'Vaya, Fallaste. El culpable sigue suelto.');
 
+
+-- ------------------------------------------------------------------------------------------------------------------
+-- ------------------------------------  La CALL que resuelve el misterio -------------------------------------------
+-- ------------------------------------------------------------------------------------------------------------------
+
+DELIMITER //
+
+CREATE PROCEDURE el_asesino_es(
+in nombre_asesino varchar(100))
+
+BEGIN
+    
+    SELECT Comentario 
+    FROM solucion 
+    WHERE sospechoso LIKE CONCAT('%', nombre_asesino, '%');
+    
+END //
+
+DELIMITER ;
