@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: agatha-app
+    env: docker
+    plan: free
+    repo: https://github.com/afminguela/Agatha
+    region: oregon
+    branch: deploy
+    dockerContext: .
+    dockerfilePath: Dockerfile  # Usaremos tu Dockerfile para correr el jar
+    envVars:
+      - key: SPRING_DATASOURCE_URL
+        value: jdbc:mysql://agatha-db:3306/HOSPITAL
+      - key: MYSQL_ROOT_PASSWORD
+        value: 1234
+    startCommand: java -jar /app.jar
+    autoDeploy: true
+
+  - type: pserv
+    name: agatha-db
+    env: docker
+    plan: free
+    dockerContext: .
+    dockerfilePath: mysql.Dockerfile
+    envVars:
+      - key: MYSQL_ROOT_PASSWORD
+        value: 1234
