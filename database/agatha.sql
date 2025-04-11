@@ -409,7 +409,7 @@ INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VAL
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('13', 'puedes usarlos para filtrar si no recuerdas el nombre. ');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('14', '- Las tablas del hospital ( y los ID, id+primera letra de la tabla)  se llaman: pacientes (idP), personal_medico (idPM), visitas (idV), tratamientos(idT), medicaciones, motivos_visitas, informe e instrucciones');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('15', '- Cuando tengas idea de la solución usa la funcion especial CALL ');
-INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'CALL el_asesino_es('aqui escribes el nombre el asesino');
+INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('16', 'CALL el_asesino_es(aqui escribes el nombre el asesino)');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('17', '');
 INSERT INTO `HOSPITAL`.`Instrucciones` (`id_Instrucciones`, `Instrucciones`) VALUES ('18', '+-+-+-+-+-+-+-+-+-+-+-¡¡Suerte!! -+-+-+-+-+-+-+-+-++-          ');
 
