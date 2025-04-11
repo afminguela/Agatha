@@ -37,8 +37,8 @@ public class QueryController {
 
     
     private boolean isQuerySafe(String query) {
-        // Lista blanca de comandos permitidos
-        if (!query.startsWith("select")&& !query.startsWith("call") {
+        // Lista blanca de comandos permitidos compara lo que pasa por la query y si tiene Select o Call lo deja pasar
+        if (!query.startsWith("select") && !query.startsWith("call")) {
             return false;
         }
 
