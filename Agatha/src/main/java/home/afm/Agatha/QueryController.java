@@ -38,12 +38,9 @@ public class QueryController {
     
     private boolean isQuerySafe(String query) {
         // Lista blanca de comandos permitidos compara lo que pasa por la query y si tiene Select o Call lo deja pasar
-
-        if (!query.startsWith("select")) {
-            return false;
-        } else if (!query.startsWith("call")){
-            return false;
-        }
+       if (!query.startsWith("select") && !query.startsWith("call")) {
+        return false;
+    }
 
         
 
@@ -51,7 +48,7 @@ public class QueryController {
         String[] blacklist = {"drop", "delete", "update", "insert", "alter",
                 "truncate", "create", "exec", "union"};
         for (String banned : blacklist) {
-            if (query.contains(banned)) {
+            if (query.toLowerCase().contains(banned)) {
                 return false;
             }
         }
