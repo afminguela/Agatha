@@ -1,16 +1,12 @@
 package home.afm.Agatha;
 
-import java.nio.file.Files;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.jdbc.core.simple.SimpleJdbcCall;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api")
@@ -28,8 +24,30 @@ public class QueryController {
         }
 
         try {
+             if (query.trim().toLowerCase().startsWith("select")) {
             List<Map<String, Object>> result = jdbcTemplate.queryForList(query);
             return ResponseEntity.ok(result);
+
+            } else if (query.trim().toLowerCase().startsWith("call el_asesino_es")) {
+                // Extraer el parámetro nombre
+                Pattern pattern = Pattern.compile("call\\s+el_asesino_es\\s*\\(([^)]*)\\)", Pattern.CASE_INSENSITIVE);
+                Matcher matcher = pattern.matcher(query.trim());
+                if (matcher.find()) {
+                    String nombre = matcher.group(1).trim().replaceAll("[\"']", "");
+                    SimpleJdbcCall simpleJdbcCall = new SimpleJdbcCall(jdbcTemplate)
+                            .withProcedureName("el_asesino_es");
+                    Map<String, Object> params = new HashMap<>();
+                    params.put("nombre", nombre);
+                    Map<String, Object> result = simpleJdbcCall.execute(params);
+                    // El ResultSet suele venir con la clave "#result-set-1"
+                    Object data = result.get("#result-set-1");
+                    return ResponseEntity.ok(data);
+
+                } else {
+                    return ResponseEntity.badRequest().body("CALL mal formado.");
+                }
+            } else {
+                return ResponseEntity.badRequest().body("Tipo de query no soportada.");
         } catch (Exception e) {
             return ResponseEntity.badRequest().body("Error en la query: " + e.getMessage());
         }
