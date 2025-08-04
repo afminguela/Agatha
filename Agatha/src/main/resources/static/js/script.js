@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Detectar pistas importantes y disparar la funcion addToNotes para verlas en el cuaderno.
   data.forEach(row => {
     if (row.detalles && (            // comprueba linea a linea si tiene las palabras clave.
-      row.detalles.includes('Digoxina') ||  
+      row.detalles.includes('Penicilina') ||  
       row.detalles.includes('manipulación') ||
       row.detalles.includes('documentos confidenciales')
     )) {
@@ -99,7 +99,7 @@ function formatAsTable(data) {
   );
 
   // Crear la línea de encabezado
-  const header = keys.map((key, i) => key.padEnd(columnWidths[i])).join(' | ');
+  const header = keys.map((key, i) => key.padEnd(columnWidths[i])).join(' |  ');
   const separator = columnWidths.map(width => '-'.repeat(width)).join('-+-');
 
   // Crear las filas de datos

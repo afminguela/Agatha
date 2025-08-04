@@ -251,6 +251,8 @@ Para comprobar si has resuelto el caso:
 SELECT * FROM Solucion 
 WHERE sospechoso = 'nombre_sospechoso';
 
+ ** MEJORADO ** he desarrollado una CALL de SQL donde le pasas el nombre que buscas directamente y te devuelve si has acertado o no. 
+
 ## 📝 Mantenimiento de Notas
 Usa el bloc de notas integrado
 Organiza la información por categorías
